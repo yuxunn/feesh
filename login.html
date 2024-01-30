@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/loginstyle.css" />
+
+
+</head>
+
+<body>
+    <div id="page-wrapper">
+        <!-- Header -->
+        <section id="header">
+            <!-- Logo -->
+            <h1><a href="index.html">Big at Heart</a></h1>
+            <!-- Nav -->
+            <nav id="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="volunteer.html">Volunteer</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="login.html">Log In</a></li>
+                </ul>
+            </nav>
+            <!-- Banner -->
+            <section id="banner">
+                <header>
+                    <h2>Log In</h2>
+                </header>
+            </section>
+        </section>
+
+        <!-- Main Content -->
+        <section id="main">
+            <!-- Login Form -->
+            <div id="signup-form">
+                <h3>Signup</h3>
+                <!-- <form action="login_process.php" method="post"> -->
+                    <input type = "text" id = "username" name = "username" placeholder = "username"/>
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" placeholder = "E-mail"/>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder = "Password"/>
+                    <button type="submit" id="saveData" name = "login_submit" value = "Remove">Log In</button>
+                <!-- </form> -->
+            </div>
+            <!-- <div class = "right">
+                <span class = "loginwith"> Sign up with<br/> social network</span>
+                <button class = "social-signin facebook"> login with facebook</button>
+                <button class = "social-signin twitter"> login with twitter</button>
+                <button class = "social-signin google"> login with twitter</button>
+
+            </div>
+            <div class = "or"> ORreferf</div> -->
+
+
+            <!-- Signup Form -->
+            <div class="form-container" id="signup-form">
+                <h3>Already have an account? </h3>
+                <div id="login-form">
+                    <h3>Login</h3>
+                    <!-- <form action="login_process.php" method="post"> -->
+                        <input type = "text" id = "username2" name = "username" placeholder = "username"/>
+                        <label for="email">Email:</label>
+                        <input type="text" id="email2" placeholder = "E-mail"/>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password2" name="password" placeholder = "Password"/>
+                        <button type="submit" id="login" name = "login_submit" value = "Remove">Log In</button>
+                    <!-- </form> -->
+                </div>
+            </div>
+        </section>
+
+    </div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
+        import { orderByChild,  getDatabase,set,ref,update} from "https://www.gstatic.com/firebasejs/10.7.2/firebase-database.js";
+
+        import {  getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js";
+
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyDHlZts4Ut6510qA2FA_s2ueFhDp7yytoQ",
+          authDomain: "feesh-75abc.firebaseapp.com",
+          databaseURL: "https://feesh-75abc-default-rtdb.asia-southeast1.firebasedatabase.app",
+          projectId: "feesh-75abc",
+          storageBucket: "feesh-75abc.appspot.com",
+          messagingSenderId: "455186655924",
+          appId: "1:455186655924:web:c54aa0745854fe3aa245e1"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const auth = getAuth();
+
+        saveData.addEventListener('click', (e) => {
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+            var username = document.getElementById('username').value
+            const encodedEmail = encodeEmail(email);
+
+
+        
+        createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+    set(ref(database, 'users/' + user.uid), {
+        username: username,
+        email: email
+    })
+    alert('user created')
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+    alert(errorMessage);
+  });
+});
+
+// login.addEventListener('click', (e) => {
+//     e.preventDefault();
+
+//     // Get the user input
+//     var email = document.getElementById('email2').value;
+//     var password = document.getElementById('password2').value;
+//     var username = document.getElementById('username2').value;
+//     const encodedEmail = encodeEmail(email);
+
+//     // console.log("reached")
+
+
+//     // Reference to the 'users' node in the database
+//     const usersRef = ref(database, 'users');
+
+
+//     // Query to find the user with the specified email
+//     const query = orderByChild(usersRef, 'email2').equalTo(email);
+//     // Execute the query
+//     get(query)
+//         .then((snapshot) => {
+//             console.log("reach4red")
+
+//             if (snapshot.exists()) {
+//                 // Email exists in the database, proceed with authentication
+//                 signInWithEmailAndPassword(auth, email, password)
+//                     .then((userCredential) => {
+//                         const user = userCredential.user;
+//                         alert('Welcome, ' + user.email + '!');
+//                     })
+//                     .catch((error) => {
+//                         const errorCode = error.code;
+//                         const errorMessage = error.message;
+//                         alert(errorMessage);
+//                     });
+//             } else {
+//                 // Email does not exist in the database
+//                 alert('User with this email does not exist.');
+//             }
+//         })
+//         .catch((error) => {
+//             alert('Error checking email:', error);
+//         });
+// });
+
+
+      </script>
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.dropotron.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+
+</html>
