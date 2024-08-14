@@ -108,7 +108,6 @@ const Page = () => {
         ) : (
           <div className="quiz-container">
             <h3>Results</h3>
-            <p>Your personality type is: {animal}</p>
             <p>Your aquatic animal is: {animal}</p>
             <button onClick={() => window.location.reload()}>Restart</button>
           </div>
