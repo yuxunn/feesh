@@ -1,5 +1,7 @@
-"use client";import React, { useState } from "react";
+"use client";
+import React, { useState } from "react";
 import { quiz } from "../data.js";
+import Card from "./Card";
 
 const Page = () => {
   const [activeQuestion, setActiveQuestion] = useState(0);
@@ -18,34 +20,61 @@ const Page = () => {
     J: 0,
     P: 0,
   });
+  const [answersHistory, setAnswersHistory] = useState([]); 
 
   const { questions } = quiz;
-  const { question, answers } = questions[activeQuestion];
+  const { question, answers, image } = questions[activeQuestion];
 
-  const onAnswerSelected = (answer, idx) => {
+  const onAnswerSelected = (answer, category) => {
     setChecked(true);
-    setSelectedAnswerIndex(idx);
+    setSelectedAnswerIndex(category);
     setSelectedAnswer(answer.category);
+    console.log(answersHistory)
+
+    const updatedAnswersHistory = [...answersHistory];
+    updatedAnswersHistory[activeQuestion] = answer.category;
+    setAnswersHistory(updatedAnswersHistory);
+
+    setResult((prev) => ({
+      ...prev,
+      [answer.category]: prev[answer.category] + 1,
+    }));
   };
 
   const nextQuestion = () => {
     setSelectedAnswerIndex(null);
-    setResult((prev) => ({
-      ...prev,
-      [selectedAnswer]: prev[selectedAnswer] + 1,
-    }));
 
     if (activeQuestion !== questions.length - 1) {
       setActiveQuestion((prev) => prev + 1);
     } else {
-      const finalAnimal = calculatePersonalityTypeAndAnimal();
+      const finalResult = {
+        I: 0,
+        E: 0,
+        S: 0,
+        N: 0,
+        F: 0,
+        T: 0,
+        J: 0,
+        P: 0,
+      };
+
+      answersHistory.forEach(category => {
+        if (category) {
+          finalResult[category] += 1;
+        }
+      });
+
+      setResult(finalResult);
+
+      const finalAnimal = calculatePersonalityTypeAndAnimal(finalResult);
       setAnimal(finalAnimal);
+      console.log(finalResult)
       setShowResult(true);
     }
     setChecked(false);
   };
 
-  const calculatePersonalityTypeAndAnimal = () => {
+  const calculatePersonalityTypeAndAnimal = (result) => {
     const comparePairs = (first, second) => {
       return result[first] >= result[second] ? first.toUpperCase() : second.toUpperCase();
     };
@@ -66,37 +95,31 @@ const Page = () => {
       INFJ: 'Axolotl', 
       ESTJ: 'Whale', 
       ENFP: 'Octopus', 
-      ESFP: 'Octopus', 
       ISFJ: 'Jellyfish'
     };
+    console.log(personalityResult)
 
     return animalMapping[personalityResult] || 'Unknown Animal';
   };
 
   return (
-    <div className="container">
-      <h1>Personality Test</h1>
+    <div className="min-h-screen flex items-center justify-center bg-blue-100">
       <div>
-        <h2>
+        <h2 className="text-black">
           Question: {activeQuestion + 1}
           <span>/{questions.length}</span>
         </h2>
       </div>
       <div>
         {!showResult ? (
-          <div className="quiz-container">
-            <h3>{question}</h3>
-            {answers.map((answer, idx) => (
-              <li
-                key={idx}
-                onClick={() => onAnswerSelected(answer, idx)}
-                className={
-                  selectedAnswerIndex === idx ? "li-selected" : "li-hover"
-                }
-              >
-                <span>{answer.text}</span>
-              </li>
-            ))}
+          <div className="quiz-container text-black">
+            <Card 
+              question={question}
+              storyImage={image} 
+              prompts={answers.map((answer, category) => ({ text: answer.text, category: answer.category }))}
+              onSelect={(answer, category) => onAnswerSelected(answer, category)}
+              selectedAnswerIndex={selectedAnswerIndex}
+            />
             <button
               onClick={nextQuestion}
               className={checked ? "btn" : "btn-disabled"}
