@@ -21,6 +21,8 @@ const Page = () => {
     P: 0,
   });
   const [answersHistory, setAnswersHistory] = useState([]); 
+  const [compatiblePartners, setCompatiblePartners] = useState([]);
+  const [incompatiblePartners, setIncompatiblePartners] = useState([]);
 
   const { questions } = quiz;
   const { question, answers, image } = questions[activeQuestion];
@@ -29,7 +31,6 @@ const Page = () => {
     setChecked(true);
     setSelectedAnswerIndex(category);
     setSelectedAnswer(answer.category);
-    console.log(answersHistory)
 
     const updatedAnswersHistory = [...answersHistory];
     updatedAnswersHistory[activeQuestion] = answer.category;
@@ -66,9 +67,11 @@ const Page = () => {
 
       setResult(finalResult);
 
-      const finalAnimal = calculatePersonalityTypeAndAnimal(finalResult);
-      setAnimal(finalAnimal);
-      console.log(finalResult)
+      const { animal, compatible, incompatible } = calculatePersonalityTypeAndAnimal(finalResult);
+      setAnimal(animal);
+      setCompatiblePartners(compatible);
+      setIncompatiblePartners(incompatible);
+
       setShowResult(true);
     }
     setChecked(false);
@@ -86,20 +89,22 @@ const Page = () => {
       comparePairs('J', 'P')
     ].join('');
 
+    // Haven't organised the mappings yet, now the mappings are just randomly allocated. 
     const animalMapping = {
-      ESFP: 'Clownfish',
-      ISTJ: 'Turtle',
-      INTJ: 'Jellyfish',
-      ENTP: 'Octopus', 
-      ENTJ: 'Shark',
-      INFJ: 'Axolotl', 
-      ESTJ: 'Whale', 
-      ENFP: 'Octopus', 
-      ISFJ: 'Jellyfish'
+      ESFP: { animal: 'Clownfish', compatible: ['Octopus'], incompatible: ['Shark'] },
+      ISTJ: { animal: 'Turtle', compatible: ['Axolotl'], incompatible: ['Whale'] },
+      INTJ: { animal: 'Jellyfish', compatible: ['Shark'], incompatible: ['Clownfish'] },
+      ENTP: { animal: 'Octopus', compatible: ['Clownfish'], incompatible: ['Jellyfish'] },
+      ENTJ: { animal: 'Shark', compatible: ['Jellyfish'], incompatible: ['Clownfish'] },
+      INFJ: { animal: 'Axolotl', compatible: ['Turtle'], incompatible: ['Octopus'] },
+      ESTJ: { animal: 'Whale', compatible: ['Turtle'], incompatible: ['Axolotl'] },
+      ENFP: { animal: 'Octopus', compatible: ['Clownfish'], incompatible: ['Jellyfish'] },
+      ISFJ: { animal: 'Jellyfish', compatible: ['Shark'], incompatible: ['Octopus'] }
     };
-    console.log(personalityResult)
 
-    return animalMapping[personalityResult] || 'Unknown Animal';
+    const resultData = animalMapping[personalityResult] || { animal: 'Unknown Animal', compatible: [], incompatible: [] };
+    
+    return resultData;
   };
 
   return (
@@ -132,6 +137,8 @@ const Page = () => {
           <div className="quiz-container">
             <h3>Results</h3>
             <p>Your aquatic animal is: {animal}</p>
+            <p>Compatible Animal: {compatiblePartners.join(', ')}</p>
+            <p>Incompatible Animal: {incompatiblePartners.join(', ')}</p>
             <button onClick={() => window.location.reload()}>Restart</button>
           </div>
         )}
