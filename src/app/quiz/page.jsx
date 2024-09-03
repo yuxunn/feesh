@@ -103,30 +103,26 @@ const Page = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-blue-100">
-      <div>
-        <h2 className="text-black">
-          Question: {activeQuestion + 1}
-          <span>/{questions.length}</span>
-        </h2>
-      </div>
+    <div className="font-sans min-h-screen flex flex-col items-center justify-center bg-[url('/static/Background.png')] bg-cover bg-center bg-no-repeat">
       <div>
         {!showResult ? (
-          <div className="quiz-container text-black">
-            <Card 
+          <div className="quiz-container text-black p-4">
+            <Card
+              questionNum={activeQuestion + 1}
               question={question}
               storyImage={image} 
               prompts={answers.map((answer, category) => ({ text: answer.text, category: answer.category }))}
               onSelect={(answer, category) => onAnswerSelected(answer, category)}
               selectedAnswerIndex={selectedAnswerIndex}
+              nextQuestion = {nextQuestion}
             />
-            <button
+            {/* <button
               onClick={nextQuestion}
               className={checked ? "btn" : "btn-disabled"}
               disabled={!checked}
             >
               {activeQuestion === questions.length - 1 ? "Finish" : "Next"}
-            </button>
+            </button> */}
           </div>
         ) : (
           <div className="quiz-container">
@@ -135,6 +131,10 @@ const Page = () => {
             <button onClick={() => window.location.reload()}>Restart</button>
           </div>
         )}
+      </div>
+      <div className='text-black p-1 text-center text-sm'>
+        <p>Made by @jing.yunn and @yuxun3696 :)</p> 
+        <p>github repo link</p>
       </div>
     </div>
   );
