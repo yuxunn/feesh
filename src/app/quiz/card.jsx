@@ -6,7 +6,7 @@ const Card = ({ questionNum, question, storyImage, prompts, onSelect, selectedAn
       <div className="text-[#FE6A57] mb-4 font-bold">
           <div>QUESTION {questionNum}/12 ⋆.˚ 𓇼</div>
       </div>
-      <img src={storyImage} alt="Story" className="w-full h-64 object-cover rounded-md mb-4 border-2 border-black rounded" />
+      <img src={storyImage} alt="Story" className="h-full  object-cover rounded-md mb-4 border-2 border-black rounded" />
       
       <div className="space-y-2 ">
         <div className="text-black mb-4 ">

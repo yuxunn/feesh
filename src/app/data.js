@@ -15,7 +15,7 @@ export const quiz = {
       answers: [
         { text: "Who dare wake me up from my beauty sleep?!", category: "N" },
         { text: "Oh no … *goes back to sleep*", category: "I" },
-        { text: "what is happening? *looks around frantically*", category: "J" }
+        { text: "What is happening? *looks around frantically*", category: "J" }
       ],
     },
     {
