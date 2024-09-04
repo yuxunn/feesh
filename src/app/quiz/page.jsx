@@ -2,8 +2,11 @@
 import React, { useState } from "react";
 import { quiz } from "../data.js";
 import Card from "./Card";
+import { useRouter } from 'next/navigation';
 
 const Page = () => {
+  const router = useRouter(); 
+
   const [activeQuestion, setActiveQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [checked, setChecked] = useState(false);
@@ -40,6 +43,7 @@ const Page = () => {
       ...prev,
       [answer.category]: prev[answer.category] + 1,
     }));
+    console.log(result);
   };
 
   const nextQuestion = () => {
@@ -66,8 +70,10 @@ const Page = () => {
       });
 
       setResult(finalResult);
-
       const { animal, compatible, incompatible } = calculatePersonalityTypeAndAnimal(finalResult);
+      router.push(
+        `/result?animal=${animal}&compatible=${compatible.join(",")}&incompatible=${incompatible.join(",")}`
+      );
       setAnimal(animal);
       setCompatiblePartners(compatible);
       setIncompatiblePartners(incompatible);
