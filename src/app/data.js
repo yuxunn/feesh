@@ -74,7 +74,7 @@ export const quiz = {
     },
     {
       question: "To your right, you see a large, fire-breathing dragon. To your left, King George is gearing up for a fight. \“Young one, I cannot defeat this monster alone. I need your help to save my kingdom.\” He offers you a range of weapons. Which will you choose?",
-      image: "static/test_image.jpg",
+      image: "static/question-img/q9-img.png",
       answers: [
         { text: "A sea shell grenade", category: "S" },
         { text: "A beautiful pearl dagger", category: "T" },
@@ -82,8 +82,8 @@ export const quiz = {
       ],
     },
     {
-      question: "With all your might, you & King George charge towards the dragon. In a flurry of activity, the dragon is defeated. The kingdom is safe! You turn around, expecting to see a desolate wasteland. However, the kingdom has beem magically restored. In fact, it was like the fight never happened at all…",
-      image: "static/test_image.jpg",
+      question: "With all your might, you & King George charge towards the dragon. In a flurry of activity, the dragon is defeated! You turn around, expecting to see a desolate wasteland. However, the kingdom has beem magically restored. In fact, it was like the fight never happened at all…",
+      image: "static/question-img/q10-img.png",
       answers: [
         { text: "How?? What??", category: "J" },
         { text: "Wowwww…can I post this on IG?", category: "E" },
@@ -92,7 +92,7 @@ export const quiz = {
     },
     {
       question: "\“Thank you for your service. I could not have saved my people without you.\” says the king. You spend a week in the kingdom, before deciding it’s time to return home. The king offers you a ride home, along with a gift of your choice. What will you choose?",
-      image: "static/test_image.jpg",
+      image: "static/question-img/q11-img.png",
       answers: [
         { text: "The weapon you fought the dragon with", category: "F" },
         { text: "A treasure chest with gold", category: "T" },
@@ -101,7 +101,7 @@ export const quiz = {
     },
     {
       question: "You enter a humongous bubble and found yourself magically transported back home. What a journey it has been! What the first thing you will do?",
-      image: "static/test_image.jpg",
+      image: "static/question-img/q12-img.png",
       answers: [
         { text: "Sleep for the next 48 hours", category: "I" },
         { text: "Call my friends to tell them about my crazy adventure", category: "E" },

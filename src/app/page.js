@@ -5,7 +5,7 @@ export default function Home() {
     <main className="min-h-screen flex flex-col items-center justify-center bg-[url('/static/Background.png')] bg-cover bg-center font-sans bg-no-repeat p-4">
       <div className="container max-w-md  mx-auto text-center p-8 border-2 border-black bg-white shadow-lg rounded-lg">
         <div className=''>
-          <img src="static/test_image.jpg" alt="Story" className="object-cover rounded-md mb-4 border-2 border-black rounded" />
+          <img src="static/home-img.png" alt="Story" className="object-cover rounded-md mb-4 border-2 border-black rounded" />
         </div>
         <h1 className="py-2 text-3xl mx-2 font-bold mb-8 text-[#5359FF]">Which marine creature are you?</h1>
         <Link href="/quiz">
