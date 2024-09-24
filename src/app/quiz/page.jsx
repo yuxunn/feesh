@@ -72,7 +72,7 @@ const Page = () => {
       setResult(finalResult);
       const { animal, compatible, incompatible } = calculatePersonalityTypeAndAnimal(finalResult);
       router.push(
-        `/result?animal=${animal}&compatible=${compatible.join(",")}&incompatible=${incompatible.join(",")}`
+        `/result?animal=${encodeURIComponent(animal)}&compatible=${encodeURIComponent(compatible.join(","))}&incompatible=${encodeURIComponent(incompatible.join(","))}`
       );
       setAnimal(animal);
       setCompatiblePartners(compatible);
