@@ -95,17 +95,24 @@ const Page = () => {
       comparePairs('J', 'P')
     ].join('');
 
-    // Haven't organised the mappings yet, now the mappings are just randomly allocated. 
     const animalMapping = {
       ESFP: { animal: 'Clownfish', compatible: ['Octopus'], incompatible: ['Shark'] },
-      ISTJ: { animal: 'Turtle', compatible: ['Axolotl'], incompatible: ['Whale'] },
+      ISTJ: { animal: 'Tortoise', compatible: ['Axolotl'], incompatible: ['Whale'] },
       INTJ: { animal: 'Jellyfish', compatible: ['Shark'], incompatible: ['Clownfish'] },
       ENTP: { animal: 'Octopus', compatible: ['Clownfish'], incompatible: ['Jellyfish'] },
       ENTJ: { animal: 'Shark', compatible: ['Jellyfish'], incompatible: ['Clownfish'] },
-      INFJ: { animal: 'Axolotl', compatible: ['Turtle'], incompatible: ['Octopus'] },
-      ESTJ: { animal: 'Whale', compatible: ['Turtle'], incompatible: ['Axolotl'] },
+      INFJ: { animal: 'Axolotl', compatible: ['Tortoise'], incompatible: ['Octopus'] },
+      ESTJ: { animal: 'Whale', compatible: ['Tortoise'], incompatible: ['Axolotl'] },
       ENFP: { animal: 'Octopus', compatible: ['Clownfish'], incompatible: ['Jellyfish'] },
-      ISFJ: { animal: 'Jellyfish', compatible: ['Shark'], incompatible: ['Octopus'] }
+      ISFJ: { animal: 'Jellyfish', compatible: ['Shark'], incompatible: ['Octopus'] },
+      INFP: { animal: 'Axolotl', compatible: ['Tortoise'], incompatible: ['Octopus'] },
+      ESFJ: { animal: 'Clownfish', compatible: ['Octopus'], incompatible: ['Shark'] },
+      ESTP: { animal: 'Shark', compatible: ['Jellyfish'], incompatible: ['Clownfish'] },
+      ISFP: { animal: 'Clownfish', compatible: ['Octopus'], incompatible: ['Shark'] },
+      INTP: { animal: 'Octopus', compatible: ['Clownfish'], incompatible: ['Jellyfish'] },
+      ENFJ: { animal: 'Tortoise', compatible: ['Axolotl'], incompatible: ['Whale'] },
+      ISTP: { animal: 'Whale', compatible: ['Tortoise'], incompatible: ['Axolotl'] }
+
     };
 
     const resultData = animalMapping[personalityResult] || { animal: 'Unknown Animal', compatible: [], incompatible: [] };
