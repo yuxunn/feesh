@@ -16,7 +16,10 @@ export default function Home() {
       </div>
       <div className='text-black p-4 pt-8 text-center text-sm'>
         <p>Made by @jing.yunn and @yuxun3696 :)</p> 
-        <p>github repo link</p>
+        <a href="https://github.com/yuxunn/feesh" className="flex justify-center items-center space-x-2">
+          <img src="/static/socials/github.png" alt="GitHub" className="w-6 h-6" />
+          <span>GitHub</span>
+        </a>
       </div>
     </main>
   );
