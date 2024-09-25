@@ -1,16 +1,20 @@
 'use client'; 
 import { useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
-import Card from './Card';
+import Card from './card.jsx';
 
-export default function Results() {
+const ResultContent = () => {
   const searchParams = useSearchParams();
   const animal = searchParams.get('animal');
 
+  return <Card animal={animal} />;
+};
+
+export default function Results() {
   return (
     <div className="font-sans min-h-screen flex flex-col items-center justify-center bg-[url('/static/Background.png')] bg-cover bg-center bg-no-repeat">
       <Suspense fallback={<div>Loading...</div>}>
-        <Card animal={animal} /> 
+        <ResultContent /> 
       </Suspense>
 
       <div className="text-black p-1 text-center text-sm">
@@ -23,3 +27,4 @@ export default function Results() {
     </div>
   );
 }
+

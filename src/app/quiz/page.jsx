@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { quiz } from "../data.js";
-import Card from "./Card";
+import Card from "./card.jsx";
 import { useRouter } from 'next/navigation';
 
 const Page = () => {
