@@ -96,23 +96,22 @@ const Page = () => {
     ].join('');
 
     const animalMapping = {
-      ESFP: { animal: 'Clownfish', compatible: ['Octopus'], incompatible: ['Shark'] },
-      ISTJ: { animal: 'Tortoise', compatible: ['Axolotl'], incompatible: ['Whale'] },
-      INTJ: { animal: 'Jellyfish', compatible: ['Shark'], incompatible: ['Clownfish'] },
-      ENTP: { animal: 'Octopus', compatible: ['Clownfish'], incompatible: ['Jellyfish'] },
-      ENTJ: { animal: 'Shark', compatible: ['Jellyfish'], incompatible: ['Clownfish'] },
-      INFJ: { animal: 'Axolotl', compatible: ['Tortoise'], incompatible: ['Octopus'] },
-      ESTJ: { animal: 'Whale', compatible: ['Tortoise'], incompatible: ['Axolotl'] },
-      ENFP: { animal: 'Octopus', compatible: ['Clownfish'], incompatible: ['Jellyfish'] },
-      ISFJ: { animal: 'Jellyfish', compatible: ['Shark'], incompatible: ['Octopus'] },
-      INFP: { animal: 'Axolotl', compatible: ['Tortoise'], incompatible: ['Octopus'] },
-      ESFJ: { animal: 'Clownfish', compatible: ['Octopus'], incompatible: ['Shark'] },
-      ESTP: { animal: 'Shark', compatible: ['Jellyfish'], incompatible: ['Clownfish'] },
-      ISFP: { animal: 'Clownfish', compatible: ['Octopus'], incompatible: ['Shark'] },
-      INTP: { animal: 'Octopus', compatible: ['Clownfish'], incompatible: ['Jellyfish'] },
-      ENFJ: { animal: 'Tortoise', compatible: ['Axolotl'], incompatible: ['Whale'] },
-      ISTP: { animal: 'Whale', compatible: ['Tortoise'], incompatible: ['Axolotl'] }
-
+      ESFP: { animal: 'Clownfish', compatible: ['Axolotl', 'Whale'], incompatible: ['Turtle', 'Pufferfish'] },
+      ENTP: { animal: 'Clownfish', compatible: ['Axolotl', 'Whale'], incompatible: ['Turtle', 'Pufferfish'] },
+      ISFJ: { animal: 'Turtle', compatible: ['Jellyfish', 'Whale'], incompatible: ['Clownfish', 'Octopus'] },
+      INFJ: { animal: 'Turtle', compatible: ['Jellyfish', 'Whale'], incompatible: ['Clownfish', 'Octopus'] },
+      ISFP: { animal: 'Jellyfish', compatible: ['Turtle', 'Axolotl'], incompatible: ['Shark', 'Pufferfish'] },
+      INFP: { animal: 'Jellyfish', compatible: ['Turtle', 'Axolotl'], incompatible: ['Shark', 'Pufferfish'] },  
+      INTJ: { animal: 'Octopus', compatible: ['Shark', 'Pufferfish'], incompatible: ['Turtle', 'Whale'] },
+      ENTP: { animal: 'Octopus', compatible: ['Shark', 'Pufferfish'], incompatible: ['Turtle', 'Whale'] },                 
+      ESTJ: { animal: 'Shark', compatible: ['Octopus', 'Pufferfish'], incompatible: ['Jellyfish', 'Axolotl'] },          
+      ENTJ: { animal: 'Shark', compatible: ['Octopus', 'Pufferfish'], incompatible: ['Jellyfish', 'Axolotl'] },     
+      INTP: { animal: 'Axolotl', compatible: ['Clownfish', 'Jellyfish'], incompatible: ['Shark', 'Whale'] },  
+      ENFJ: { animal: 'Axolotl', compatible: ['Clownfish', 'Jellyfish'], incompatible: ['Shark', 'Whale'] },         
+      ISTJ: { animal: 'Whale', compatible: ['Clownfish', 'Turtle'], incompatible: ['Octopus', 'Axolotl'] },
+      ESFJ: { animal: 'Whale', compatible: ['Clownfish', 'Turtle'], incompatible: ['Octopus', 'Axolotl'] },
+      ISTP: { animal: 'Jellyfish', compatible: ['Octopus', 'Shark'], incompatible: ['Clownfish', 'Jellyfish'] },
+      ESTP: { animal: 'Jellyfish', compatible: ['Octopus', 'Shark'], incompatible: ['Clownfish', 'Jellyfish'] },
     };
 
     const resultData = animalMapping[personalityResult] || { animal: 'Unknown Animal', compatible: [], incompatible: [] };

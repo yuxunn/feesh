@@ -11,9 +11,9 @@ const Card = ({ animal }) => {
   const incompatibleAnimalInfo = incompatible.map(animal => getAnimalInfo(animal));
 
   return (
-    <div className="result-card text-black bg-white border-2 border-black rounded-lg p-6 max-w-md mx-auto mt-10">
+    <div className="bg-white shadow-lg rounded-lg p-6 max-w-md mx-auto text-left font-sans border-2 border-black shadow-md rounded">
 
-      <h2 className="text-xl font-bold text-center text-black">YOU GOT...</h2>
+      <h2 className="text-xl text-center text-black">YOU GOT...</h2>
       <h1 className="text-4xl font-bold text-center text-black ">{animal}</h1>
 
 
@@ -21,23 +21,23 @@ const Card = ({ animal }) => {
       <div className="flex justify-center items-center my-4 space-x-4">
         <img src={image} alt={`${animal} image`} className="w-32 h-32" />
         
-        <ul className="list-disc text-left">
+        <ul className="list-disc text-left text-sm">
           {bulletPoints.map((point, index) => (
             <li key={index}>{point}</li>
           ))}
         </ul>
       </div>
 
-      <div className="writeup mt-4 space-y-2  text-black ">
+      <div className="writeup mt-4 space-y-2  text-black text-sm">
         {writeUp.map((line, index) => (
-          <p key={index} className="bg-yellow-200 p-2 rounded-lg text-center  text-black ">{line}</p>
+          <p key={index} className="bg-yellow-200 p-3 rounded-lg text-center  text-black ">{line}</p>
         ))}
       </div>
 
       <div className="flex justify-between mt-8">
         <div className="attraction">
-          <h4 className="font-bold">STRONG ATTRACTION</h4>
-          <div className="flex space-x-2 mt-2">
+          <h4 className="text-center ">STRONG ATTRACTION</h4>
+          <div className="flex space-x-2 px-2 mt-2 border-2 border-black rounded m-1">
             {compatibleAnimalInfo.map((animalInfo, index) => (
               <div key={index} className="text-center">
                 <p>{animalInfo.animal}</p>
@@ -47,8 +47,8 @@ const Card = ({ animal }) => {
           </div>
         </div>
         <div className="attraction">
-          <h4 className="font-bold">WEAK ATTRACTION</h4>
-          <div className="flex space-x-2 mt-2">
+          <h4 className="text-center">WEAK ATTRACTION</h4>
+          <div className="flex space-x-2 px-2 mt-2 border-2 border-black rounded m-1">
             {incompatibleAnimalInfo.map((animalInfo, index) => (
               <div key={index} className="text-center  text-black">
                 <p>{animalInfo.animal}</p>
@@ -59,22 +59,7 @@ const Card = ({ animal }) => {
         </div>
       </div>
 
-      <div className="share mt-8 text-center">
-        <p className="font-bold font-black">SHARE YOUR RESULTS!</p>
-        <div className="flex justify-center space-x-4 mt-2">
-          <img src="/static/socials/instagram.png" alt="Instagram" className="w-8 h-8" />
-          <img src="/static/socials/telegram.png" alt="Telegram" className="w-8 h-8" />
-          <img src="/static/socials/twitter.png" alt="Twitter" className="w-8 h-8" />
-          <img src="/static/socials/whatsapp.png" alt="Whatsapp" className="w-8 h-8" />
 
-        </div>
-        <button
-        onClick={() => router.push('/')} 
-        className="bg-[#FFB8B8] text-black w-[12em] h-[3em] text-l py-2 px-4 border-2 border-black rounded-lg hover:bg-[#DF9A9A] transition duration-300 mt-6"
-      >
-        Restart
-      </button>
-      </div>
 
     </div>
   );
