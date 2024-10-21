@@ -78,11 +78,11 @@ export const quiz = {
       answers: [
         { text: "A sea shell grenade", category: "S" },
         { text: "A beautiful pearl dagger", category: "T" },
-        { text: "A sturdy bow and arrow made of an unknown substance", category: "P" }
+        { text: "A sturdy bow and arrow made out of an unknown substance", category: "P" }
       ],
     },
     {
-      question: "With all your might, you & King George charge towards the dragon. In a flurry of activity, the dragon is defeated! You turn around, expecting to see a desolate wasteland. However, the kingdom has beem magically restored. In fact, it was like the fight never happened at all…",
+      question: "With all your might, you & King George charge towards the dragon. In a flurry of activity, the dragon is defeated! You turn around, expecting to see a desolate wasteland. However, the kingdom has been magically restored. In fact, it was like the fight never happened at all…",
       image: "/static/question-img/q10-img.png",
       answers: [
         { text: "How?? What??", category: "J" },
@@ -100,7 +100,7 @@ export const quiz = {
       ],
     },
     {
-      question: "You enter a humongous bubble and found yourself magically transported back home. What a journey it has been! What the first thing you will do?",
+      question: "You enter a humongous bubble and found yourself magically transported back home. What a journey it has been! What is the first thing you will do?",
       image: "/static/question-img/q12-img.png",
       answers: [
         { text: "Sleep for the next 48 hours", category: "I" },
