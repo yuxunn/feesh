@@ -143,11 +143,11 @@ const Page = () => {
           </div>
         ) : (
           <div className="quiz-container">
-            <h3>Results</h3>
+            {/* <h3>Results</h3>
             <p>Your aquatic animal is: {animal}</p>
             <p>Compatible Animal: {compatiblePartners.join(', ')}</p>
             <p>Incompatible Animal: {incompatiblePartners.join(', ')}</p>
-            <button onClick={() => window.location.reload()}>Restart</button>
+            <button onClick={() => window.location.reload()}>Restart</button> */}
           </div>
         )}
       </div>

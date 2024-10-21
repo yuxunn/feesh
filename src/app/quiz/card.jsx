@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image'; 
 
 const Card = ({ questionNum, question, storyImage, prompts, onSelect, selectedAnswerIndex, nextQuestion }) => {
   return (
@@ -6,11 +7,16 @@ const Card = ({ questionNum, question, storyImage, prompts, onSelect, selectedAn
       <div className="text-[#FE6A57] mb-4 font-bold">
           <div>QUESTION {questionNum}/12 ⋆.˚ 𓇼</div>
       </div>
-      <img
-  src={storyImage}
-  alt="Story"
-  className="w-full h-auto object-contain rounded-md mb-4 border-2 border-black rounded"
-/>
+
+      <Image
+        src={storyImage}
+        alt="Story"
+        width={600} 
+        height={400} 
+        className="w-full h-auto object-contain rounded-md mb-4 border-2 border-black rounded"
+        priority={questionNum === 1} 
+      />
+
       <div className="space-y-2 ">
         <div className="text-black mb-4 ">
           <div>{question}</div>
@@ -28,25 +34,16 @@ const Card = ({ questionNum, question, storyImage, prompts, onSelect, selectedAn
             {prompt.text}
           </button>
         ))}
-        {/* <div className="text-right text-blue">
-            <button 
-              className="text-[#5359FF] font-bold underline hover:text-[#9FA2FF]"
-              onClick={nextQuestion}
-            >
-              {questionNum === 12 ? "Finish" : "࿐ ࿔*:･ﾟ Go to next →"}
-            </button>
-        </div> */}
+
         <div className="text-right text-[#5359FF]">
           ࿐ ࿔*:･ﾟ 
           {selectedAnswerIndex !== null && (
-            
               <button 
                 className="text-[#5359FF] font-bold underline hover:text-[#9FA2FF]"
                 onClick={nextQuestion}
               >
                 {questionNum === 12 ? "Finish" : "Go to next →"}
               </button>
-  
           )}
         </div>
 

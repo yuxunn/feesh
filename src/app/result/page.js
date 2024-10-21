@@ -11,7 +11,7 @@ const ResultContent = () => {
   return <Card animal={animal} />;
 };
 export default function Results() {
-  const router = useRouter(); // Move useRouter() here
+  const router = useRouter();
 
   return (
     <div className="font-sans min-h-screen flex flex-col items-center justify-center bg-[url('/static/Background.png')] bg-cover bg-center bg-no-repeat">
